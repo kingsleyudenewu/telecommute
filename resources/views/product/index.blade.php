@@ -27,7 +27,7 @@
             <h3>Add product</h3>
             <hr>
             <div class="col-md-6">
-                {!! Form::open(array('id' => 'submit_product')) !!}
+                {!! Form::open(array( 'id' => 'submit_product')) !!}
                 <div class="form-group">
                     {!! Form::label('Product', 'Product name') !!}
                     {!! Form::text('name', '', array('class' => 'form-control', 'id' => 'name')) !!}

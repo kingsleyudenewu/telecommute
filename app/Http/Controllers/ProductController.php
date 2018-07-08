@@ -41,15 +41,18 @@ class ProductController extends Controller
             'price' => 'required'
         ]);
 
+        $inputData = $request->only(['name', 'qty', 'price']);
+        $inputData['created_at'] = date('Y-m-d H:i:s');
+
         $file = date('Y-m-d: H-i-s').".json";
-        $json_string = json_encode($request, JSON_PRETTY_PRINT);
+        $json_string = json_encode($inputData, JSON_PRETTY_PRINT);
         file_put_contents($file, $json_string, FILE_APPEND);
 
         $create_product = Product::create([ 'name'=>$request->name, 'qty'=>$request->qty, 'price'=>$request->price]);
         if($create_product){
-            return response()->json(200);
+            return response()->json('Operation successful');
         }
-        else return response()->json(400);
+        else return response()->json('Operation failed, tyr again');
     }
 
     /**
