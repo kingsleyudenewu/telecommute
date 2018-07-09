@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('product.index');
 });
 
-Route::post('/product', 'ProductController@store')->name('product.store');
+Route::resource('product','ProductController');
+Route::get('/getAllProduct', 'ProductController@getAllProduct')->name('getAllProduct');
